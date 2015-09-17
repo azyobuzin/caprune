@@ -39,11 +39,14 @@ namespace Caprune
                 return;
             }
 
+            windowRect.left++;
+            windowRect.right--;
+
             if (this.checkBox.IsChecked.GetValueOrDefault())
             {
-                var h = ((windowRect.bottom - windowRect.top) - ((windowRect.right - windowRect.left) * (9.0 / 16.0))) / 2.0;
-                windowRect.top += (int)Math.Ceiling(h);
-                windowRect.bottom -= (int)Math.Floor(h);
+                var h = (int)Math.Ceiling(((windowRect.bottom - windowRect.top) - ((windowRect.right - windowRect.left) * (9.0 / 16.0))) / 2.0);
+                windowRect.top += h;
+                windowRect.bottom -= h;
             }
 
             var size = new System.Drawing.Size(windowRect.right - windowRect.left, windowRect.bottom - windowRect.top);
